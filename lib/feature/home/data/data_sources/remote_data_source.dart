@@ -10,7 +10,7 @@ abstract class HomeRemoteDataSource {
 class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
   @override
   Future<List<CoinEntityModel>> getData(int page) async {
-    // try {
+    try {
       var url = Uri.parse(
           'https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&sparkline=true');
       var response = await http.get(
@@ -33,9 +33,9 @@ class HomeRemoteDataSourceImpl extends HomeRemoteDataSource {
         throw FormatException(
             (jsonDecode(response.body))["message"].toString());
       }
-    // } catch (e) {
-    //   throw Exception();
-    // }
+    } catch (e) {
+      throw Exception();
+    }
   }
 }
 

@@ -12,7 +12,7 @@ class HomePage extends StatelessWidget {
   final HomeBloc _homeBloc = HomeBloc();
   int page = 0;
   final ScrollController _scrollController = ScrollController();
-  bool isLoading = true;
+  final bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,7 @@ class HomePage extends StatelessWidget {
           backgroundColor: Colors.transparent,
           leading: Container(),
           title: const Text(
-            'CryptoMoon',
+            'Crypto',
             style: TextStyle(
               color: Colors.yellow,
               fontWeight: FontWeight.bold,
@@ -37,7 +37,6 @@ class HomePage extends StatelessWidget {
           listener: (context, state) async {},
           builder: (context, state) {
             if (state is HomeLoaded) {
-              isLoading = state.showPagingLoading ?? true;
               return _body(
                 state.data ?? [],
               );
@@ -59,7 +58,6 @@ class HomePage extends StatelessWidget {
             scrollInfo is ScrollEndNotification &&
             _scrollController.position.extentAfter == 0) {
           page = page + 1;
-          isLoading = false;
           _homeBloc.add(GetData(page));
         }
         return false;

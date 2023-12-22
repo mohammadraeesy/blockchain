@@ -176,6 +176,10 @@ class _DetailPageState extends State<DetailPage> {
               title: 'Market cap Change 24h',
               info: widget.homeEntity.marketCapChange24h.toString()!,
             ),
+            _dataDisplay(
+              title: 'Market Cap Change Percentage 24h',
+              info: widget.homeEntity.marketCapChangePercentage24h.toString()!,
+            ),
             // _dataDisplay(
             //   title: 'Num exchanges',
             //   info: widget.homeEntity.numExchanges!,
@@ -208,7 +212,7 @@ class _DetailPageState extends State<DetailPage> {
     const TextStyle textStyle = TextStyle(
       color: Colors.white,
     );
-    return info.isNotEmpty
+    return info.isNotEmpty == true
         ? Padding(
             padding: const EdgeInsets.symmetric(
               horizontal: 8.0,

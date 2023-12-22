@@ -1,5 +1,4 @@
 import 'package:uni_project/feature/home/domain/entities/home_entity.dart';
-import 'dart:convert';
 
 class CoinEntityModel extends CoinEntity {
   CoinEntityModel({
@@ -86,7 +85,23 @@ class CoinEntityModel extends CoinEntity {
         atlDate: json['atl_date'],
         lastUpdated: json['last_updated'],
         sparklineIn7d: json['sparkline_in_7d'] != null
-            ? new SparklineIn7d.fromJson(json['sparkline_in_7d'])
+            ? SparklineIn7dModel.fromJson(json['sparkline_in_7d'])
             : null,
       );
+}
+
+class SparklineIn7dModel extends SparklineIn7d {
+  SparklineIn7dModel({List<double>? price}) : super(price: price);
+
+  factory SparklineIn7dModel.fromJson(Map<String, dynamic> json) {
+    return SparklineIn7dModel(
+      price: json['price'].cast<double>(),
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['price'] = this.price;
+    return data;
+  }
 }
