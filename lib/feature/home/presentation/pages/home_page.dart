@@ -22,6 +22,15 @@ class HomePage extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Colors.transparent,
           leading: Container(),
+          actions: [
+            PopupMenuButton<int>(
+              onSelected: (item) => handleClick(item),
+              itemBuilder: (context) => [
+                PopupMenuItem<int>(value: 0, child: Text('All Coins')),
+                PopupMenuItem<int>(value: 1, child: Text('Favorite Coins')),
+              ],
+            ),
+          ],
           title: const Text(
             'Crypto',
             style: TextStyle(
@@ -128,6 +137,15 @@ class HomePage extends StatelessWidget {
                               fontWeight: FontWeight.w500,
                             ),
                           ),
+                          TextButton(
+                            onPressed: () {
+                              _homeBloc.add(AddFavoriteCoins(id: value.id!));
+                            },
+                            child: Text(
+                              'Add To Favorite Coins',
+                              style: TextStyle(color: Colors.blue),
+                            ),
+                          ),
                         ],
                       ),
                       const Icon(
@@ -227,4 +245,14 @@ class HomePage extends StatelessWidget {
           direction: SkeletonDirection.ltr,
         ),
       );
+
+  handleClick(int item) {
+    switch (item) {
+      case 0:
+        _homeBloc.add(GetData(page));
+        break;
+      case 1:
+        _homeBloc.add(GetFavoriteCoins());
+    }
+  }
 }

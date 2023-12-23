@@ -1,5 +1,3 @@
-
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uni_project/feature/home/domain/entities/home_entity.dart';
 import 'package:uni_project/feature/home/domain/use_cases/get_data_use_case.dart';
@@ -9,10 +7,9 @@ part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  final ResetPasswordUseCase resetPasswordUseCase = ResetPasswordUseCase();
+  final CoinUseCase coinUseCase = CoinUseCase();
   bool showPagingLoading = true;
   List<CoinEntity> data = [];
-
 
   HomeBloc() : super(HomeInitial()) {
     on<HomeEvent>((event, emit) async {
@@ -23,7 +20,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         if (event.page != 0) {
           showPagingLoading = true;
         }
-        final result = await resetPasswordUseCase.call(event.page);
+        final result = await coinUseCase.getData(event.page);
         emit(result.fold(
           (l) => HomeError(error: l),
           (r) {
@@ -31,6 +28,23 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             return HomeLoaded(data: data, showPagingLoading: showPagingLoading);
           },
         ));
+      } else if (event is GetFavoriteCoins) {
+        emit(HomeLoading());
+        final result = await coinUseCase.LoadFavoriteCoins();
+        emit(result.fold(
+          (l) => HomeError(error: l),
+          (r) {
+            return HomeLoaded(data: r, showPagingLoading: showPagingLoading);
+          },
+        ));
+      } else if (event is AddFavoriteCoins) {
+        final result = await coinUseCase.saveFavoriteCoin(event.id);
+        result.fold(
+          (l) => print('false'),
+          (r) {
+            print(true);
+          },
+        );
       }
     });
   }

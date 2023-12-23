@@ -7,3 +7,11 @@ class GetData extends HomeEvent {
 
   GetData(this.page);
 }
+
+class GetFavoriteCoins extends HomeEvent {}
+
+class AddFavoriteCoins extends HomeEvent {
+  final String id;
+
+  AddFavoriteCoins({required this.id});
+}
