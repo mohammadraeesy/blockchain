@@ -88,6 +88,46 @@ class CoinEntityModel extends CoinEntity {
             ? SparklineIn7dModel.fromJson(json['sparkline_in_7d'])
             : null,
       );
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = new Map<String, dynamic>();
+    data['id'] = this.id;
+    data['symbol'] = this.symbol;
+    data['name'] = this.name;
+    data['image'] = this.image;
+    data['current_price'] = this.currentPrice;
+    data['market_cap'] = this.marketCap;
+    data['market_cap_rank'] = this.marketCapRank;
+    data['fully_diluted_valuation'] = this.fullyDilutedValuation;
+    data['total_volume'] = this.totalVolume;
+    data['high_24h'] = this.high24h;
+    data['low_24h'] = this.low24h;
+    data['price_change_24h'] = this.priceChange24h;
+    data['price_change_percentage_24h'] = this.priceChangePercentage24h;
+    data['market_cap_change_24h'] = this.marketCapChange24h;
+    data['market_cap_change_percentage_24h'] =
+        this.marketCapChangePercentage24h;
+    if (this.circulatingSupply != null) {
+      data['circulating_supply'] = this.circulatingSupply;
+    }
+    if (this.totalSupply != null) {
+      data['total_supply'] = this.totalSupply;
+    }
+    if (this.maxSupply != null) {
+      data['max_supply'] = this.maxSupply;
+    }
+    data['ath'] = this.ath;
+    data['ath_change_percentage'] = this.athChangePercentage;
+    data['ath_date'] = this.athDate;
+    data['atl'] = this.atl;
+    data['atl_change_percentage'] = this.atlChangePercentage;
+    data['atl_date'] = this.atlDate;
+    data['last_updated'] = this.lastUpdated;
+    if (this.sparklineIn7d != null) {
+      data['sparkline_in_7d'] = this.sparklineIn7d;
+    }
+    return data;
+  }
 }
 
 class SparklineIn7dModel extends SparklineIn7d {

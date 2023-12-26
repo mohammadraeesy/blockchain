@@ -17,9 +17,23 @@ class HomeError extends HomeState {
 class HomeLoaded extends HomeState {
   final List<CoinEntity>? data;
   final bool? showPagingLoading;
+  final String? message;
 
   HomeLoaded({
     this.data,
     this.showPagingLoading,
+    this.message,
   });
+
+  HomeLoaded setSate({
+    List<CoinEntity>? data,
+    bool? showPagingLoading,
+    String? message,
+  }) {
+    return HomeLoaded(
+      message: message,
+      data: data ?? this.data,
+      showPagingLoading: showPagingLoading ?? this.showPagingLoading,
+    );
+  }
 }

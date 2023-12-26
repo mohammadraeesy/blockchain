@@ -13,6 +13,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   HomeBloc() : super(HomeInitial()) {
     on<HomeEvent>((event, emit) async {
+      final currentState = getCurrentHomeLoadedPageState();
       if (event is GetData) {
         if (event.page == 0) {
           emit(HomeLoading());
@@ -45,7 +46,19 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
             print(true);
           },
         );
+      } else if (event is showMessageEvent) {
+        emit(
+          currentState!.setSate(
+            message: 'Data is available on your keyboard',
+          ),
+        );
       }
     });
+  }
+
+  HomeLoaded? getCurrentHomeLoadedPageState() {
+    final currentState =
+        super.state is HomeLoaded ? super.state as HomeLoaded : null;
+    return currentState;
   }
 }

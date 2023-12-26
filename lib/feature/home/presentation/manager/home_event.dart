@@ -10,6 +10,8 @@ class GetData extends HomeEvent {
 
 class GetFavoriteCoins extends HomeEvent {}
 
+class showMessageEvent extends HomeEvent {}
+
 class AddFavoriteCoins extends HomeEvent {
   final String id;
 
