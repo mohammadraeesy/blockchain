@@ -105,18 +105,6 @@ class _DetailPageState extends State<DetailPage> {
                 info: widget.homeEntity.priceChange24h.toString(),
                 title: 'daily changes',
               ),
-              // _changesInfoDisplay(
-              //   the1d: widget.homeEntity.the7D!,
-              //   title: 'weekly changes',
-              // ),
-              // _changesInfoDisplay(
-              //   the1d: widget.homeEntity.the30D!,
-              //   title: 'month changes',
-              // ),
-              // _changesInfoDisplay(
-              //   the1d: widget.homeEntity.the365D!,
-              //   title: 'yearly changes',
-              // ),
             ],
           ),
         ),
@@ -180,30 +168,6 @@ class _DetailPageState extends State<DetailPage> {
               title: 'Market Cap Change Percentage 24h',
               info: widget.homeEntity.marketCapChangePercentage24h.toString()!,
             ),
-            // _dataDisplay(
-            //   title: 'Num exchanges',
-            //   info: widget.homeEntity.numExchanges!,
-            // ),
-            // _dataDisplay(
-            //   title: 'Num pairs',
-            //   info: widget.homeEntity.numPairs!,
-            // ),
-            // _dataDisplay(
-            //   title: 'Num pairs unmapped',
-            //   info: widget.homeEntity.numPairsUnmapped!,
-            // ),
-            // _dataDisplay(
-            //   title: 'plat form currency',
-            //   info: widget.homeEntity.platformCurrency!,
-            // ),
-            // _dataDisplay(
-            //   title: 'plat form currency',
-            //   info: widget.homeEntity.platformCurrency!,
-            // ),
-            // _dataDisplay(
-            //   title: 'price date',
-            //   info: widget.homeEntity.priceDate.toString(),
-            // ),
           ],
         ),
       );
@@ -269,34 +233,6 @@ class _DetailPageState extends State<DetailPage> {
                 ),
               ),
             ),
-            // _dataDisplay(
-            //   title: 'market cap change',
-            //   info: the1d.marketCapChange!,
-            // ),
-            // _dataDisplay(
-            //   title: 'market cap change pct',
-            //   info: the1d.marketCapChangePct!,
-            // ),
-            // _dataDisplay(
-            //   title: 'price change',
-            //   info: the1d.priceChange!,
-            // ),
-            // _dataDisplay(
-            //   title: 'price change pct',
-            //   info: the1d.priceChangePct!,
-            // ),
-            // _dataDisplay(
-            //   title: 'volume',
-            //   info: the1d.volume!,
-            // ),
-            // _dataDisplay(
-            //   title: 'volume change',
-            //   info: the1d.volumeChange!,
-            // ),
-            // _dataDisplay(
-            //   title: 'volume change pct',
-            //   info: the1d.volumeChangePct!,
-            // )
           ],
         ),
       );
